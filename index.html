@@ -8,8 +8,76 @@
       name="description"
       content="A Simple Design of a Basic Calculator Using html, CSS and JavaScript"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
     <title>Calculator App 2</title>
+    <style>
+      * {
+    margin: 0px;
+    padding: 0px;
+    font: Century;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Calculator {
+    background-color: rgb(231, 231, 231);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 5px 5px 2px #202020;
+}
+
+main form input {
+    border: none;
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    margin: 8px;
+    box-shadow: -3px -2px 6px  rgb(48, 48, 48), 3px 7px 5px rgb(39, 39, 39);
+    background-color: transparent;
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+main form .display {
+    width: 100%;
+    margin:  10px 0px;
+    box-shadow: -1px -1px 15px rgb(63, 63, 63), 1px 2px 15px rgb(43, 43, 43);
+    text-align: right;
+    pointer-events: none;
+    font-size: x-large;
+    padding: 10px;
+}
+
+.btn-equal {
+    color: rgb(0, 255, 0);
+    font-size: 20px;
+    width: 140px;
+}
+
+.btn-yellow {
+    color: gold;
+    font-size: 20px;
+}
+
+.btn-clear {
+    color: gold;
+}
+.btn-slice {
+    color: rgba(255, 0, 0, 0.747);
+}
+    </style>
   </head>
   <body>
 
@@ -57,6 +125,38 @@
 
     </main>
 
-    <script src="./main.js"></script>
+    <!-- <script src="./main.js"></script> -->
+     <script>
+      let screen = document.querySelector('.display');
+let inputs = document.querySelectorAll('.btn');
+let clear = document.querySelector('.btn-clear');
+let slice = document.querySelector('.btn-slice');
+let equal = document.querySelector('.btn-equal');
+
+inputs.forEach(input => {
+    input.addEventListener('click', (e) => {
+        let value = e.target.value;
+        screen.value += value;
+    })
+})
+
+clear.addEventListener('click', ()=> {
+    screen.value = "";
+})
+
+equal.addEventListener('click', ()=> {
+    let answer = eval(screen.value);
+    if(screen.value === "") {
+        screen.value = ""
+    } else {
+        screen.value = answer;
+    }
+})
+
+slice.addEventListener('click', ()=> {
+    screen.value = screen.value.slice(0,-1);
+})
+
+     </script>
   </body>
 </html>
